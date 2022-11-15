@@ -28,6 +28,10 @@ class GPA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("GPA calculater"),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -40,11 +44,22 @@ class GPA extends StatelessWidget {
             ),
             Center(
               child: ElevatedButton(
-                child: Text('Calculate'),
                 onPressed: () {
-                  print("${controller.text}%");
-                  controller.clear();
+                  int? grade = int.tryParse(controller.text);
+
+                  if (grade! >= 90) {
+                    print("A");
+                  } else if (grade >= 80) {
+                    print("B");
+                  } else if (grade >= 70) {
+                    print("c");
+                  } else if (grade >= 60) {
+                    print("D");
+                  } else {
+                    print("F");
+                  }
                 },
+                child: Text('Calculate'),
               ),
             ),
           ],
